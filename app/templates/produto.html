@@ -1,0 +1,53 @@
+<!-- produto.html -->
+{% extends 'base.html' %}
+{% load static %}  <!-- Carrega os arquivos estáticos -->
+{% load crispy_forms_tags %}  <!-- Carrega os tags do crispy forms -->
+
+{% block title %}Página de Produto{% endblock %}
+
+{% block content %}
+<style>
+    .btn-outline-success {
+        margin-top: 10px;
+    }
+    input {
+        margin-bottom: 10px;
+    }
+    h2{
+        margin-top: 20px;
+    }
+</style>
+<div class="container">
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <h2>Cadastro de Produto</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-outline-success d-block w-100">Salvar</button>
+    </form>
+</div>
+
+{% endblock %}{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Seleciona todas as mensagens
+        const messages = document.querySelectorAll('.alert');
+        
+        // Para cada mensagem, define um temporizador para ocultá-la após 3 segundos
+        messages.forEach((message) => {
+            setTimeout(() => {
+                // Adiciona uma classe CSS que oculta a mensagem ou altera diretamente o estilo
+                message.style.display = 'none';
+            }, 3000); // 3000 milissegundos = 3 segundos
+        });
+    });
+    </script>
+{% endblock scripts %}

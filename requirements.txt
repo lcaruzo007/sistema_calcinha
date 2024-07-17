@@ -1,0 +1,11 @@
+asgiref==3.8.1
+chardet==5.2.0
+crispy-bootstrap4==2024.1
+Django==5.0.7
+django-crispy-forms==2.2
+pillow==10.4.0
+reportlab==4.2.2
+setuptools==70.3.0
+sqlparse==0.5.1
+tzdata==2024.1
+wheel==0.43.0
